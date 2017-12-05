@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private final static int REQUEST_LOGIN = 102;
     boolean logan = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (!logan){
             Intent intent = new Intent(this , LoginActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_LOGIN);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
