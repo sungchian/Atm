@@ -9,10 +9,41 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_LOGIN = 102;
+    private final static int REQUST_USERINFO = 105;
     boolean logan = false;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQUEST_LOGIN:
+                if (resultCode == RESULT_OK){
+                    String userid = data.getStringExtra("EXTRA_USERID");
+                    Toast.makeText(this, "Login userid: "+userid,Toast.LENGTH_LONG).show();
+                    getSharedPreferences("atm", MODE_PRIVATE)
+                            .edit()
+                            .putString("USERID", userid)
+                            .apply();
+                    }else{
+                    finish();
+                }
+                break;
+            case REQUST_USERINFO:
+                if (requestCode == RESULT_OK){
+                    String name = data.getStringExtra("EXTRA_NAME");
+                    String phone = data.getStringExtra("EXTRA_PHONE");
+                    Toast.makeText(this, "NICKNAME: "+name,Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "PHONE: "+phone,Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
