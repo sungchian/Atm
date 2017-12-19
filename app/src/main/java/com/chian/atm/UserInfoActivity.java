@@ -15,8 +15,8 @@ public class UserInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        EditText edName = (EditText) findViewById(R.id.ed_name);
-        EditText edPhone = (EditText) findViewById(R.id.ed_phone);
+        edName = (EditText) findViewById(R.id.ed_name);
+        edPhone = (EditText) findViewById(R.id.ed_phone);
         String name = getSharedPreferences("info", MODE_PRIVATE).getString("NAME","");
         String phone = getSharedPreferences("info", MODE_PRIVATE).getString("PHONE","");
         edName.setText(name);
