@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         switch (requestCode){
             case REQUEST_LOGIN:
                 if (resultCode == RESULT_OK){
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startActivity(new Intent(this, Ch8Activity.class));
+
         if (!logan){
             Intent intent = new Intent(this , LoginActivity.class);
             startActivityForResult(intent, REQUEST_LOGIN);
