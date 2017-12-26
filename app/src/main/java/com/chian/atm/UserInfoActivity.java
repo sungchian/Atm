@@ -36,6 +36,9 @@ public class UserInfoActivity extends AppCompatActivity {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.ages, android.R.layout.simple_list_item_1);
         ages.setAdapter(adapter);
     }
+    public void addr(View view){
+        startActivity(new Intent(this, CityActivity.class));
+    }
     public void ok(View view){
         Log.d(TAG, "ok: " + ages.getSelectedItem().toString());
         int age = Integer.parseInt(ages.getSelectedItem().toString());
