@@ -1,5 +1,6 @@
 package com.chian.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.ref.ReferenceQueue;
+
 public class CityActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView city;
     private String[] cities;
     public static final String TAG = CityActivity.class.getSimpleName();
+    public static final int REQUEST_LOGIN = 102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +31,17 @@ public class CityActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Log.d(TAG, "onItemClick: " + position + "/" + cities[position]);
-        String[] data = null;
-        if (position == 0){
-            data = new String[]{"中正區","暖暖區","八堵區"};
-        }
+        Intent p = new Intent(this, AreaActivity.class);
+        p.putExtra("area", cities[position] );
+        startActivityForResult(p, REQUEST_LOGIN);
+
         
 
     }
