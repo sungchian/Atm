@@ -22,7 +22,8 @@ public class AddrActivity extends AppCompatActivity {
         County = (Spinner) findViewById(R.id.County);
         area = (Spinner) findViewById(R.id.area);
         final ArrayList<String> data2 = new ArrayList<>();
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.county,android.R.layout.simple_list_item_1);
+        ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1, new String[]{"基隆市", "新北市", "台北市"});
         County.setAdapter(adapter);
         County.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
